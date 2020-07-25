@@ -4,11 +4,11 @@ export const Click: React.FC = (): JSX.Element => {
   React.useEffect(() => {
     const parts = document.getElementsByClassName("parts");
     const elements = Array.from(parts); // collection を arrayに変換
-    console.log(elements);
-    elements.map((element: any) => {
+    elements.map((element: Element) => {
+      console.log(element);
       let id = element.getAttribute("id");
       document.querySelector(`#${id}`)?.addEventListener("click", () => {
-        console.log(id);
+        element.setAttribute("fill", "blue");
       });
     });
   });

@@ -12,7 +12,7 @@ export const Circle: React.FC = (): JSX.Element => {
           cy="100"
           r="60"
           stroke="black"
-          stroke-width="5"
+          strokeWidth="5"
           fill="blue"
         ></circle>
       </svg>

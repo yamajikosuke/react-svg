@@ -16,7 +16,7 @@ export const Rect: React.FC = (): JSX.Element => {
           ry="10"
           fill="blue"
           stroke="black"
-          stroke-width="5"
+          strokeWidth="5"
         ></rect>
       </svg>
     </main>
