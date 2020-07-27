@@ -1,11 +1,11 @@
 import React from "react";
-import { Click } from "./Click";
+import { ClickRect } from "./ClickRect";
 
 export const P2: React.FC = (): JSX.Element => {
   return (
     <>
       <div>onClick</div>
-      <Click />
+      <ClickRect />
     </>
   );
 };

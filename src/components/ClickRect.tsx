@@ -1,14 +1,21 @@
 import React from "react";
 
-export const Click: React.FC = (): JSX.Element => {
+interface elementColor {
+  [key: string]: string;
+}
+
+export const ClickRect: React.FC = (): JSX.Element => {
+  // set color
+  const color: elementColor = { p1: "orange", p2: "gray" };
   React.useEffect(() => {
     const parts = document.getElementsByClassName("parts");
     const elements = Array.from(parts); // collection を arrayに変換
     elements.map((element: Element) => {
-      console.log(element);
       let id = element.getAttribute("id");
       document.querySelector(`#${id}`)?.addEventListener("click", () => {
-        element.setAttribute("fill", "blue");
+        if (id) {
+          element.setAttribute("fill", color[id]);
+        }
       });
     });
   });
@@ -19,7 +26,7 @@ export const Click: React.FC = (): JSX.Element => {
         <g>
           <rect
             className="parts"
-            id="red"
+            id="p1"
             x="50"
             y="50"
             width="100"
@@ -27,7 +34,7 @@ export const Click: React.FC = (): JSX.Element => {
             fill="red"
           ></rect>
           <rect
-            id="black"
+            id="p2"
             className="parts"
             x="100"
             y="70"
