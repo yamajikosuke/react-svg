@@ -5,7 +5,7 @@ interface elementColorProp {
 }
 
 export const ClickRectUseContext: React.FC = (): JSX.Element => {
-  const [pickColor, setPickColor] = useState<string>("red");
+  // const [pickColor, setPickColor] = useState<string>("red");
   const [isComplete, setIsComplete] = useState<boolean>(false);
 
   let elementColor: elementColorProp[] = [
