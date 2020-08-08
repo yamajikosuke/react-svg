@@ -43,7 +43,7 @@ export const ClickRect: React.FC = (): JSX.Element => {
 
   return (
     <main>
-      <svg width="300" height="300" className="svgcode">
+      <svg width="300" height="300">
         <g>
           <rect
             className="parts"
