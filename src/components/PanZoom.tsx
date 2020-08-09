@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { INITIAL_VALUE, ReactSVGPanZoom, TOOL_NONE } from "react-svg-pan-zoom";
+import { ReactSvgPanZoomLoader } from "react-svg-pan-zoom-loader";
+import { INITIAL_VALUE, ReactSVGPanZoom } from "react-svg-pan-zoom";
 
 export const PanZoom = () => {
-  const [tool, setTool] = useState(TOOL_NONE);
+  const [tool, setTool] = useState("pan");
   const [value, setValue] = useState(INITIAL_VALUE);
 
-  const changeTool = (nextTool: any) => {
+  const changeTool = (nextTool: string) => {
+    console.log(nextTool);
     setTool(nextTool);
   };
 
@@ -14,11 +16,10 @@ export const PanZoom = () => {
   };
 
   return (
-    <div>
+    <div style={{ width: "100%", height: "100%" }}>
       <ReactSVGPanZoom
         width={500}
         height={500}
-        ref={(Viewer: any) => (Viewer = Viewer)}
         tool={tool}
         onChangeTool={(tool: any) => changeTool(tool)}
         value={value}
@@ -28,8 +29,13 @@ export const PanZoom = () => {
         onClick={(event: { x: any; y: any; originalEvent: any }) =>
           console.log("click", event.x, event.y, event.originalEvent)
         }
+        background="#ccc"
+        scaleFactorMin="0.5"
+        scaleFactorMax="5"
+        miniatureProps={{ position: "none" }}
+        toolbarProps={{ position: "none" }}
       >
-        <svg width={617} height={316}>
+        <svg width={617} height={400}>
           <g fillOpacity=".5" strokeWidth="4">
             <rect
               x="400"
