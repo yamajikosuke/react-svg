@@ -1,18 +1,9 @@
-import React, { useState } from "react";
-
-interface elementColorProp {
-  [key: string]: { color: string; isComplete: boolean };
-}
+import React from "react";
+import { CircleButton2 } from "./common/CircleButton2";
+import { ResourceContext2 } from "./common/ResourceContext2";
 
 export const ClickRectUseContext: React.FC = (): JSX.Element => {
-  // const [pickColor, setPickColor] = useState<string>("red");
-  const [isComplete, setIsComplete] = useState<boolean>(false);
-
-  let elementColor: elementColorProp[] = [
-    { p1: { color: "orange", isComplete: false } },
-    { p2: { color: "gray", isComplete: false } },
-    { p3: { color: "red", isComplete: false } },
-  ];
+  const [config] = React.useContext<any>(ResourceContext2);
 
   React.useEffect(() => {
     const parts = document.getElementsByClassName("parts");
@@ -20,26 +11,11 @@ export const ClickRectUseContext: React.FC = (): JSX.Element => {
     elements.forEach((element: Element) => {
       let id = element.getAttribute("id");
       document.querySelector(`#${id}`)?.addEventListener("click", () => {
-        elementColor.forEach((elm) => {
-          if (id && id === Object.keys(elm)[0]) {
-            //  if (pickColor === elm[id]["color"]) {
-            element.setAttribute("fill", elm[id]["color"]);
-            elm[id]["isComplete"] = true;
-            //    }
-          }
-        });
-        console.log(checkIsComplete());
-        if (checkIsComplete() === elementColor.length) setIsComplete(true);
+        console.log("click");
+        element.setAttribute("fill", config.color);
       });
     });
-    console.log(isComplete);
   });
-
-  const checkIsComplete = () => {
-    return elementColor.filter((element) => {
-      return element[Object.keys(element)[0]].isComplete === true;
-    }).length;
-  };
 
   return (
     <main>
@@ -74,6 +50,13 @@ export const ClickRectUseContext: React.FC = (): JSX.Element => {
           ></rect>
         </g>
       </svg>
+      <div>
+        <CircleButton2 color="pink" />
+        <CircleButton2 color="red" />
+        <CircleButton2 color="blue" />
+        <CircleButton2 color="gray" />
+      </div>
+      <div>color:{config.color}</div>
     </main>
   );
 };

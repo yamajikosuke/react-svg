@@ -12,6 +12,9 @@ export const Top: React.FC = (): JSX.Element => {
         <Link to={"/p2"}>page2</Link>
       </div>
       <div>
+        <Link to={"/p2-1"}>page2-1</Link>
+      </div>
+      <div>
         <Link to={"/p3"}>page3</Link>
       </div>
     </>

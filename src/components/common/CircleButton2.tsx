@@ -1,15 +1,20 @@
 import React from "react";
-import { resouceProps, ResourceContext } from "./ResourceContext";
+import { ResourceContext2 } from "./ResourceContext2";
 
-export const CircleButton2: React.FC = (): JSX.Element => {
-  const resource = React.useContext<resouceProps>(ResourceContext);
+type buttonProps = {
+  color: string;
+};
+export const CircleButton2: React.FC<buttonProps> = (props): JSX.Element => {
+  const [, setConfig] = React.useContext(ResourceContext2);
+
   return (
     <svg width="40" height="40">
       <circle
         cx="20"
         cy="20"
         r="20"
-        fill={resource.CircleButton2.color}
+        fill={props.color}
+        onClick={() => setConfig({ color: props.color })}
       ></circle>
     </svg>
   );
