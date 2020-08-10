@@ -14,7 +14,10 @@ export const CircleButton2: React.FC<buttonProps> = (props): JSX.Element => {
         cy={param}
         r={param}
         fill={props.color}
-        onClick={() => setConfig({ color: props.color })}
+        onClick={() => {
+          console.log("click button");
+          setConfig({ color: props.color });
+        }}
       ></circle>
     </svg>
   );
