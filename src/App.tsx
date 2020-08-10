@@ -6,6 +6,7 @@ import { P2 } from "./components/page2";
 import { P2_1 } from "./components/page2_1";
 import { PanZoom } from "./components/PanZoom";
 import { PanZoomLoader } from "./components/PanZoomLoader";
+import { PanZoomWithCircleButton } from "./components/PanZoomWithCircleButton";
 import { P3 } from "./components/page3";
 
 export const App: React.FC = (): JSX.Element => {
@@ -23,6 +24,12 @@ export const App: React.FC = (): JSX.Element => {
           path="/pan-zoom-loader"
           render={(): JSX.Element => <PanZoomLoader />}
         />
+        <Route
+          exact
+          path="/pan-zoom-width-circle-button"
+          render={(): JSX.Element => <PanZoomWithCircleButton />}
+        />
+
         <Route exact path="/p3" render={(): JSX.Element => <P3 />} />
       </Switch>
     </BrowserRouter>

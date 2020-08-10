@@ -30,8 +30,8 @@ export const PanZoom = () => {
           console.log("click", event.x, event.y, event.originalEvent)
         }
         background="#ccc"
-        scaleFactorMin="0.5"
-        scaleFactorMax="5"
+        scaleFactorMin={0.5}
+        scaleFactorMax={5}
         miniatureProps={{ position: "none" }}
         toolbarProps={{ position: "none" }}
       >
