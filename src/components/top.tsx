@@ -18,6 +18,9 @@ export const Top: React.FC = (): JSX.Element => {
         <Link to={"/pan-zoom"}>react-svg-pan-zoom</Link>
       </div>
       <div>
+        <Link to={"/pan-zoom-loader"}>react-svg-pan-zoom-loader</Link>
+      </div>
+      <div>
         <Link to={"/p3"}>page3</Link>
       </div>
     </>
