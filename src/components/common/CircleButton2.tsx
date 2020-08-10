@@ -8,7 +8,7 @@ export const CircleButton2: React.FC<buttonProps> = (props): JSX.Element => {
   const [, setConfig] = React.useContext(ResourceContext2);
   const param = 22;
   return (
-    <svg width={param * 2} height={param * 2}>
+    <svg width={param * 2} height={param * 2} className="palette">
       <circle
         cx={param}
         cy={param}

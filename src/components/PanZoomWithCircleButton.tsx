@@ -8,9 +8,15 @@ export const PanZoomWithCircleButton = () => {
   const [value, setValue] = useState(INITIAL_VALUE);
   const resource = { color: "" };
   const [config, setConfig] = useState(resource);
+  const [clientWidth, setClientWidth] = useState<number>(0);
+  const [clientHeight, setClientHeight] = useState<number>(0);
 
   React.useEffect(() => {
     addEventListener();
+    setClientWidth(document.documentElement.clientWidth);
+    setClientHeight(document.documentElement.clientHeight - 100);
+    console.log(clientWidth);
+    console.log(clientHeight);
     const parts = document.getElementsByClassName("parts");
     const elements = Array.from(parts); // collection を arrayに変換
     elements.forEach((element: Element) => {
@@ -19,7 +25,7 @@ export const PanZoomWithCircleButton = () => {
         element.setAttribute("fill", config.color);
       });
     });
-  }, [config]);
+  }, [config, clientHeight, clientWidth]);
 
   const addEventListener = () => {
     console.log("addEventListner");
@@ -29,12 +35,8 @@ export const PanZoomWithCircleButton = () => {
     document.addEventListener("touchmove", outputType, false);
   };
 
-  //event の種類を表示
   const outputType = (evnt: any) => {
-    //event の種類を格納
-
     let evntType = evnt.type;
-    console.log(evntType);
     if (evntType === "touchstart" || evntType === "click") {
       setTool("none");
     } else {
@@ -54,8 +56,8 @@ export const PanZoomWithCircleButton = () => {
   return (
     <ResourceContext2.Provider value={[config, setConfig]}>
       <ReactSVGPanZoom
-        width={300}
-        height={300}
+        width={clientWidth}
+        height={clientHeight}
         tool={tool}
         onChangeTool={(tool: any) => changeTool(tool)}
         value={value}

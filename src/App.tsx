@@ -8,6 +8,7 @@ import { PanZoom } from "./components/PanZoom";
 import { PanZoomLoader } from "./components/PanZoomLoader";
 import { PanZoomWithCircleButton } from "./components/PanZoomWithCircleButton";
 import { P3 } from "./components/page3";
+import "./app.css";
 
 export const App: React.FC = (): JSX.Element => {
   return (
