@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  INITIAL_VALUE,
-  ReactSVGPanZoom,
-  fitSelection,
-} from "react-svg-pan-zoom";
+import { INITIAL_VALUE, ReactSVGPanZoom } from "react-svg-pan-zoom";
 import { ResourceContext2 } from "./common/ResourceContext2";
 import { CircleButton2 } from "./common/CircleButton2";
 
@@ -18,6 +14,7 @@ export const PanZoomWithCircleButton2 = () => {
   const [config, setConfig] = useState(resource);
   const [clientWidth, setClientWidth] = useState<number>(0);
   const [clientHeight, setClientHeight] = useState<number>(0);
+  const [viewer, setViewer] = useState<any>(null);
 
   let elementColorInit: elementColorProp[] = [
     { p1: { color: "pink", isComplete: false } },
@@ -27,12 +24,64 @@ export const PanZoomWithCircleButton2 = () => {
   const [elementColor, setElementColor] = useState(elementColorInit);
   let updateTimer: number;
 
+  const handleClick = (): void => {
+    //    viewer.fitToViewer();
+    //viewer.pan(2, 2);
+    //    viewer.zoom(20, 20, 5);
+    //    viewer.fitToViewer("center", "center");
+    //    viewer.reset();
+    //    console.log(viewer.getValue());
+    const data = {
+      a: 1,
+      c: 0,
+      e: 20,
+      b: 0,
+      d: 1,
+      f: 40,
+      version: 3,
+      mode: "idle",
+      focus: false,
+      pinchPointDistance: null,
+      prePinchMode: null,
+      viewerWidth: 375,
+      viewerHeight: 567,
+      SVGMinX: 0,
+      SVGMinY: 0,
+      SVGWidth: "300",
+      SVGHeight: "300",
+      scaleFactorMin: 0.5,
+      scaleFactorMax: 5,
+      startX: null,
+      startY: null,
+      endX: null,
+      endY: null,
+      miniatureOpen: true,
+      lastAction: "pan",
+    };
+    viewer.setValue(data);
+  };
+
+  React.useLayoutEffect(() => {
+    console.log("useEffectLayout");
+  });
+
   React.useEffect(() => {
+    console.log("viewer");
+    console.log(viewer);
+  }, [viewer]);
+
+  React.useEffect(() => {
+    console.log("value", value);
+  }, [value]);
+
+  React.useEffect(() => {
+    console.log("useEffect-01");
     updateTimer = window.setInterval(() => setTool("pan"), 500);
     return (): void => clearInterval(updateTimer);
   }, []);
 
   React.useEffect(() => {
+    console.log("useEffect-02");
     //    fitSelection(100, 20, 500, 500);
     addEventListener();
     setClientWidth(document.documentElement.clientWidth);
@@ -40,6 +89,7 @@ export const PanZoomWithCircleButton2 = () => {
   }, [clientHeight, clientWidth]);
 
   React.useEffect(() => {
+    console.log("useEffect-03");
     const parts = document.getElementsByClassName("parts");
     const elements = Array.from(parts); // collection を arrayに変換
     elements.forEach((element: Element) => {
@@ -85,7 +135,7 @@ export const PanZoomWithCircleButton2 = () => {
 
   const outputType = (event: any): void => {
     let eventType = event.type;
-    console.log(eventType);
+    // console.log(eventType);
     if (eventType === "touchstart" || eventType === "click") {
       setTool("none");
     } else {
@@ -94,7 +144,7 @@ export const PanZoomWithCircleButton2 = () => {
   };
 
   const changeTool = (nextTool: string) => {
-    console.log(nextTool);
+    // console.log(nextTool);
     setTool(nextTool);
   };
 
@@ -107,6 +157,9 @@ export const PanZoomWithCircleButton2 = () => {
       <ReactSVGPanZoom
         width={clientWidth}
         height={clientHeight}
+        ref={(Viewer: any) => {
+          setViewer(Viewer);
+        }}
         tool={tool}
         onChangeTool={(tool: string) => changeTool(tool)}
         value={value}
@@ -169,7 +222,10 @@ export const PanZoomWithCircleButton2 = () => {
         <CircleButton2 color="blue" />
         <CircleButton2 color="gray" />
       </div>
-      <div>color:{config.color}</div>
+      <div>
+        color:{config.color}
+        <button onClick={(): void => handleClick()}>action</button>
+      </div>
     </ResourceContext2.Provider>
   );
 };
