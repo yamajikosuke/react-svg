@@ -27,7 +27,7 @@ export const XmlParser: React.FC = (): JSX.Element => {
   console.log(targetElement);
   console.log(CircleButtonInit);
 
-  return <main></main>;
+  return <main>console.log</main>;
 };
 
 const xmlText = `
