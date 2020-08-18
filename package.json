@@ -17,6 +17,7 @@
     "react-svg-pan-zoom": "^3.8.0",
     "react-svg-pan-zoom-loader": "^1.4.1",
     "react-virtualized": "^9.21.2",
+    "react-xml-parser": "^1.1.6",
     "typescript": "~3.7.2"
   },
   "scripts": {

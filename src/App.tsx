@@ -10,6 +10,7 @@ import { PanZoomWithCircleButton } from "./components/PanZoomWithCircleButton";
 import { PanZoomWithCircleButton2 } from "./components/PanZoomWithCircleButton2";
 import { P3 } from "./components/page3";
 import { Text } from "./components/text";
+import { XmlParser } from "./components/xmlparser";
 import "./app.css";
 
 export const App: React.FC = (): JSX.Element => {
@@ -38,6 +39,11 @@ export const App: React.FC = (): JSX.Element => {
           render={(): JSX.Element => <PanZoomWithCircleButton2 />}
         />
         <Route exact path="/text" render={(): JSX.Element => <Text />} />
+        <Route
+          exact
+          path="/xml-parser"
+          render={(): JSX.Element => <XmlParser />}
+        />
 
         <Route exact path="/p3" render={(): JSX.Element => <P3 />} />
       </Switch>

@@ -31,6 +31,9 @@ export const Top: React.FC = (): JSX.Element => {
       <div>
         <Link to={"/text"}>text</Link>
       </div>
+      <div>
+        <Link to={"/xml-parser"}>xml-parser</Link>
+      </div>
 
       <div>
         <Link to={"/p3"}>page3</Link>
